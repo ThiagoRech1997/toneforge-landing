@@ -434,4 +434,31 @@ button:disabled {
   background: linear-gradient(90deg, #3B82F6, #8B5CF6, #10B981, #06B6D4);
   background-size: 200% 100%;
   animation: gradient-shift 2s linear infinite;
+}
+
+/* Hero animation containment - evita interferência com outras seções */
+.hero-animation-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.hero-background-element {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  max-width: 100vw;
+  max-height: 100vh;
+  contain: strict;
+}
+
+/* Garante que as animações não escapem da viewport */
+@media (max-height: 600px) {
+  .hero-animation-container {
+    height: 100vh;
+    max-height: 600px;
+  }
 } 

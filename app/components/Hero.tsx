@@ -16,10 +16,10 @@ function useRandomPositions(count: number) {
 
   useEffect(() => {
     const newPositions = Array.from({ length: count }, () => ({
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      left: Math.random() * 100,
-      top: Math.random() * 100,
+      x: Math.random() * 50 + 10, // Limita movimento x entre 10-60vw
+      y: Math.random() * 50 + 10, // Limita movimento y entre 10-60vh
+      left: Math.random() * 80 + 10, // Posição inicial entre 10-90%
+      top: Math.random() * 80 + 10, // Posição inicial entre 10-90%
       duration: 15 + Math.random() * 20
     }))
     setPositions(newPositions)
@@ -45,28 +45,30 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.08),transparent_60%)]"></div>
       </div>
 
-      {/* Animated background elements - usando cores do ToneForge */}
+      {/* Animated background elements - CONTAINERIZADO para não interferir */}
       <div className="absolute inset-0 overflow-hidden opacity-40">
-        {mounted && backgroundElements.map((element, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
-            animate={{
-              x: [0, element.x],
-              y: [0, element.y],
-              opacity: [0, 0.7, 0],
-            }}
-            transition={{
-              duration: element.duration,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            style={{
-              left: `${element.left}%`,
-              top: `${element.top}%`,
-            }}
-          />
-        ))}
+        <div className="hero-animation-container">
+          {mounted && backgroundElements.map((element, i) => (
+            <motion.div
+              key={i}
+              className="hero-background-element w-1 h-1 bg-blue-400/30 rounded-full"
+              animate={{
+                x: [0, element.x],
+                y: [0, element.y],
+                opacity: [0, 0.7, 0],
+              }}
+              transition={{
+                duration: element.duration,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              style={{
+                left: `${element.left}%`,
+                top: `${element.top}%`,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
@@ -212,7 +214,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2, delay: 1.5 }}
-          className="mt-16 flex justify-center items-center gap-1"
+          className="mt-16 mb-8 flex justify-center items-center gap-1 max-w-md mx-auto"
         >
           {mounted && Array.from({ length: 20 }).map((_, i) => (
             <motion.div
@@ -227,10 +229,13 @@ export default function Hero() {
                 ease: "easeInOut",
                 delay: i * 0.1,
               }}
+              style={{
+                maxHeight: '40px', // Limita altura máxima
+              }}
             />
           ))}
         </motion.div>
-        <div className="text-center text-gray-400 text-sm mt-4">
+        <div className="text-center text-gray-400 text-sm mt-4 mb-8">
           🎵 Processamento de Áudio em Tempo Real
         </div>
       </div>
