@@ -211,15 +211,15 @@ export default function Hero() {
           transition={{ duration: 2, delay: 1.5 }}
           className="mt-16 flex justify-center items-center gap-1"
         >
-          {Array.from({ length: 20 }).map((_, i) => (
+          {mounted && Array.from({ length: 20 }).map((_, i) => (
             <motion.div
               key={i}
               className="w-1 bg-gradient-to-t from-blue-500 to-cyan-400 rounded-full audio-visualizer"
               animate={{
-                height: [4, Math.random() * 40 + 8, 4],
+                height: [4, 20 + (i % 3) * 10, 4],
               }}
               transition={{
-                duration: 1 + Math.random(),
+                duration: 1 + (i % 2) * 0.5,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: i * 0.1,

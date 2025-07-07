@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import { 
   Github, 
   ExternalLink, 
@@ -10,11 +11,14 @@ import {
   Music,
   Heart,
   Users,
-  Award
 } from 'lucide-react'
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
+  const [currentYear, setCurrentYear] = useState('')
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear().toString())
+  }, [])
 
   return (
     <footer className="relative py-20 px-6 overflow-hidden">

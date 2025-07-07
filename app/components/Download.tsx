@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import { 
   Download, 
   Github, 
@@ -15,13 +16,23 @@ import {
 } from 'lucide-react'
 
 export default function DownloadSection() {
-  // Background animation
-  const backgroundElements = Array.from({ length: 8 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    delay: Math.random() * 2
-  }))
+  const [backgroundElements, setBackgroundElements] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    delay: number;
+  }>>([])
+
+  // Background animation - gerado apenas no cliente para evitar erro de hidratação
+  useEffect(() => {
+    const elements = Array.from({ length: 8 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      delay: Math.random() * 2
+    }))
+    setBackgroundElements(elements)
+  }, [])
 
   return (
     <section className="py-24 px-6 relative overflow-hidden">
