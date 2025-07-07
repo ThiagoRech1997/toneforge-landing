@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
@@ -32,6 +32,9 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
   const backgroundElements = useRandomPositions(6) // Reduzido para 6
+  
+  // Obter basePath do processo de build ou usar string vazia
+  const basePath = process.env.NODE_ENV === 'production' && process.env.GITHUB_ACTIONS ? '/toneforge-landing' : ''
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
@@ -77,7 +80,7 @@ export default function Hero() {
           <div className="relative">
             <div className="w-32 h-32 rounded-3xl flex items-center justify-center shadow-2xl shadow-blue-500/25 overflow-hidden">
               <img 
-                src="/toneforge-icon.svg" 
+                src={`${basePath}/toneforge-icon.png`} 
                 alt="ToneForge Icon" 
                 className="w-full h-full object-cover rounded-3xl"
               />

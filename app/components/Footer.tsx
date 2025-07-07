@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
@@ -15,6 +15,9 @@ import {
 
 export default function Footer() {
   const [currentYear, setCurrentYear] = useState('')
+  
+  // Obter basePath do processo de build ou usar string vazia
+  const basePath = process.env.NODE_ENV === 'production' && process.env.GITHUB_ACTIONS ? '/toneforge-landing' : ''
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear().toString())
@@ -44,7 +47,7 @@ export default function Footer() {
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center overflow-hidden">
                 <img 
-                  src="/toneforge-icon.svg" 
+                  src={`${basePath}/toneforge-icon.png`} 
                   alt="ToneForge Icon" 
                   className="w-full h-full object-cover rounded-2xl"
                 />

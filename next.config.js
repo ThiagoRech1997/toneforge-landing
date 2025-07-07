@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
+const isGithubPages = process.env.GITHUB_ACTIONS || false;
+
 const nextConfig = {
   // Configuração para exportação estática
   output: 'export',
+  
+  // Adiciona basePath e assetPrefix para GitHub Pages
+  basePath: isGithubPages ? '/toneforge-landing' : '',
+  assetPrefix: isGithubPages ? '/toneforge-landing/' : '',
   
   // Configurações de performance
   compress: true,
