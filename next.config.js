@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Configuração para exportação estática
+  output: 'export',
+  
   // Configurações de performance
   compress: true,
   poweredByHeader: false,
@@ -11,33 +14,7 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  },
-
-  // Headers de segurança
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
-          },
-        ],
-      },
-    ]
+    unoptimized: true, // Necessário para exportação estática
   },
 
   // Webpack otimizações
@@ -62,22 +39,6 @@ const nextConfig = {
     }
 
     return config
-  },
-
-  // Redirects para SEO
-  async redirects() {
-    return [
-      {
-        source: '/home',
-        destination: '/',
-        permanent: true,
-      },
-      {
-        source: '/index',
-        destination: '/',
-        permanent: true,
-      },
-    ]
   },
 
   // Configurações experimentais
