@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: 'ToneForge',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'ToneForge - Pedaleira Digital para Android',
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ToneForge - Pedaleira Digital Profissional para Android',
     description: 'Pedaleira digital com 9 efeitos profissionais, looper multi-track e afinador preciso. 100% gratuito!',
-    images: ['/twitter-image.jpg'],
+    images: ['/og-image.png'],
     creator: '@thiagofernendorech',
   },
 
