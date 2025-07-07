@@ -1,0 +1,27 @@
+{
+  "name": "ToneForge - Pedaleira Digital Profissional",
+  "short_name": "ToneForge",
+  "description": "Transforme seu Android em uma estação de criação musical completa com processamento de áudio em tempo real",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#3B82F6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/toneforge-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/toneforge-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["music", "productivity", "utilities"],
+  "lang": "pt-BR",
+  "dir": "ltr"
+} 
