@@ -6,9 +6,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://toneforge.app'),
+  metadataBase: new URL('https://thiagorech1997.github.io/toneforge-landing/'),
   title: 'ToneForge - Pedaleira Digital Profissional para Android',
-  description: 'Transforme seu Android em uma estação de criação musical completa. Pedaleira digital com processamento de áudio em tempo real, 9 efeitos profissionais, looper multi-track, afinador preciso e muito mais. 100% gratuito.',
+  description: 'Transforme seu Android em uma estação de criação musical completa com processamento de áudio em tempo real e efeitos profissionais.',
   keywords: [
     'ToneForge',
     'pedaleira digital',
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://toneforge.app',
+    url: 'https://thiagorech1997.github.io/toneforge-landing/',
     title: 'ToneForge - Pedaleira Digital Profissional para Android',
     description: 'Transforme seu Android em uma estação de criação musical completa com processamento de áudio em tempo real e efeitos profissionais.',
     siteName: 'ToneForge',
     images: [
       {
-        url: '/og-image.png',
+        url: 'https://thiagorech1997.github.io/toneforge-landing/og-image.png',
         width: 1200,
         height: 630,
         alt: 'ToneForge - Pedaleira Digital para Android',
@@ -62,9 +62,10 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'ToneForge - Pedaleira Digital Profissional para Android',
-    description: 'Pedaleira digital com 9 efeitos profissionais, looper multi-track e afinador preciso. 100% gratuito!',
-    images: ['/og-image.png'],
+    description: 'Transforme seu Android em uma estação de criação musical completa com processamento de áudio em tempo real e efeitos profissionais.',
+    images: ['https://thiagorech1997.github.io/toneforge-landing/og-image.png'],
     creator: '@thiagofernendorech',
+    site: '@thiagofernendorech',
   },
 
   manifest: '/manifest.json',
@@ -85,10 +86,10 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://toneforge.app',
+    canonical: 'https://thiagorech1997.github.io/toneforge-landing/',
     languages: {
-      'pt-BR': 'https://toneforge.app',
-      'en-US': 'https://toneforge.app/en',
+      'pt-BR': 'https://thiagorech1997.github.io/toneforge-landing/',
+      'en-US': 'https://thiagorech1997.github.io/toneforge-landing/en',
     },
   },
   category: 'technology',
@@ -111,6 +112,32 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="dark">
       <head>
+        {/* Open Graph Meta Tags */}
+        <meta property="og:url" content="https://thiagorech1997.github.io/toneforge-landing/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="ToneForge - Pedaleira Digital Profissional para Android" />
+        <meta property="og:description" content="Transforme seu Android em uma estação de criação musical completa com processamento de áudio em tempo real e efeitos profissionais." />
+        <meta property="og:image" content="https://thiagorech1997.github.io/toneforge-landing/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="ToneForge - Pedaleira Digital para Android" />
+        <meta property="og:site_name" content="ToneForge" />
+        <meta property="og:locale" content="pt_BR" />
+
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="thiagorech1997.github.io" />
+        <meta property="twitter:url" content="https://thiagorech1997.github.io/toneforge-landing/" />
+        <meta name="twitter:title" content="ToneForge - Pedaleira Digital Profissional para Android" />
+        <meta name="twitter:description" content="Transforme seu Android em uma estação de criação musical completa com processamento de áudio em tempo real e efeitos profissionais." />
+        <meta name="twitter:image" content="https://thiagorech1997.github.io/toneforge-landing/og-image.png" />
+        <meta name="twitter:creator" content="@thiagofernendorech" />
+        <meta name="twitter:site" content="@thiagofernendorech" />
+
+        {/* Additional Meta Tags */}
+        <meta name="robots" content="index,follow" />
+        <meta name="googlebot" content="index,follow,max-video-preview:-1,max-image-preview:large,max-snippet:-1" />
+        
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -143,7 +170,7 @@ export default function RootLayout({
                 "name": "ToneForge"
               },
               "downloadUrl": "https://github.com/ThiagoRech1997/ToneForge/releases",
-              "screenshot": "https://toneforge.app/screenshot.jpg",
+              "screenshot": "https://thiagorech1997.github.io/toneforge-landing/og-image.png",
               "softwareVersion": "2.1.0",
               "datePublished": "2024-12-01",
               "dateModified": "2024-12-01",
