@@ -23,7 +23,7 @@ const effects = [
     color: 'from-red-600 to-red-700',
     bgColor: 'bg-red-600/10',
     borderColor: 'border-red-500/30',
-    parameters: ['Drive: 0-100%', 'Mix: 0-100%', 'Tipos: Overdrive, Fuzz, Metal']
+    parameters: ['Drive: 0-100%', 'Mix: 0-100%', 'Tipos: Soft Clip, Hard Clip, Fuzz, Overdrive']
   },
   {
     id: 'delay',

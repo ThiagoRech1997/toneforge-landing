@@ -203,7 +203,7 @@ export default function Hero() {
               <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
                 <Award className="w-5 h-5 text-white" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold text-white">2.1.0</div>
+              <div className="text-3xl md:text-4xl font-bold text-white">1.0</div>
             </div>
             <div className="text-gray-300 text-sm">Versão Atual</div>
           </div>
