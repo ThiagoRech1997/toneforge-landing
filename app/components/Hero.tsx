@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { Download, Star, Users, Award, Zap, Music } from 'lucide-react'
+import Image from 'next/image'
+import { Download, Zap, Music, Cpu } from 'lucide-react'
 
 // Hook para posições aleatórias dos elementos de background
 function useRandomPositions(count: number) {
@@ -81,10 +82,13 @@ export default function Hero() {
         >
           <div className="relative">
             <div className="w-32 h-32 rounded-3xl flex items-center justify-center shadow-2xl shadow-blue-500/25 overflow-hidden">
-              <img 
-                src={`${basePath}/toneforge-icon.png`} 
-                alt="ToneForge Icon" 
+              <Image
+                src={`${basePath}/toneforge-icon.png`}
+                alt="ToneForge Icon"
+                width={128}
+                height={128}
                 className="w-full h-full object-cover rounded-3xl"
+                priority
               />
             </div>
             {/* LED indicator - inspirado nos pedais reais */}
@@ -120,7 +124,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.6 }}
           className="text-lg md:text-xl text-gray-300 mb-16 max-w-4xl mx-auto leading-relaxed"
         >
-          Transforme seu Android em uma estação de criação musical completa com processamento de áudio em tempo real, 9 efeitos profissionais e tecnologia de baixa latência.
+          Processamento de áudio em tempo real com engine C++ nativo. 9 efeitos, looper multi-track, afinador, gravador e mais — tudo gratuito e de código aberto.
         </motion.p>
 
         {/* Features badges - usando cores específicas do app */}
@@ -128,7 +132,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="flex flex-wrap justify-center gap-4 mb-20"
+          className="flex flex-wrap justify-center gap-4 mb-12"
         >
           <div className="px-4 py-2 bg-gradient-to-r from-blue-600/80 to-blue-500/80 rounded-full text-white text-sm font-medium backdrop-blur-sm border border-blue-400/30 hover:bg-blue-500/90 transition-all duration-300 hover-lift">
             <Zap className="w-4 h-4 inline mr-2" />
@@ -148,23 +152,27 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center mb-20"
+          className="flex flex-col sm:flex-row gap-6 justify-center mb-12"
         >
-          <motion.button
+          <motion.a
+            href="https://github.com/ThiagoRech1997/ToneForge/releases"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05, y: -3 }}
             whileTap={{ scale: 0.95 }}
-            className="group relative min-w-[220px] px-10 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-semibold text-lg hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 overflow-hidden"
+            className="group relative min-w-[220px] px-10 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-semibold text-lg hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300 overflow-hidden inline-flex items-center justify-center"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
             <div className="relative z-10 flex items-center justify-center gap-3">
               <Download className="w-5 h-5" />
               Baixar Agora
             </div>
-          </motion.button>
-          
+          </motion.a>
+
           <motion.button
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
             className="min-w-[220px] px-10 py-4 border-2 border-green-500/60 hover:border-green-400 rounded-full text-white hover:bg-green-500/10 font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20"
           >
             Ver Funcionalidades
@@ -178,66 +186,37 @@ export default function Hero() {
           transition={{ duration: 1, delay: 1.2 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
         >
-          <div className="glass-strong rounded-2xl p-6 hover:bg-blue-500/5 transition-all duration-300 hover-scale">
+          <div className="glass-strong rounded-2xl p-6 transition-all duration-300">
             <div className="flex items-center justify-center gap-3 mb-3">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
-                <Users className="w-5 h-5 text-white" />
+                <Music className="w-5 h-5 text-white" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold text-white">50k+</div>
+              <div className="text-3xl md:text-4xl font-bold text-white">9</div>
             </div>
-            <div className="text-gray-300 text-sm">Downloads</div>
+            <div className="text-gray-300 text-sm">Efeitos de Áudio</div>
           </div>
-          
-          <div className="glass-strong rounded-2xl p-6 hover:bg-green-500/5 transition-all duration-300 hover-scale">
+
+          <div className="glass-strong rounded-2xl p-6 transition-all duration-300">
             <div className="flex items-center justify-center gap-3 mb-3">
               <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center">
-                <Star className="w-5 h-5 text-white" />
+                <Zap className="w-5 h-5 text-white" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold text-white">4.8</div>
+              <div className="text-3xl md:text-4xl font-bold text-white">&lt; 3ms</div>
             </div>
-            <div className="text-gray-300 text-sm">Avaliação</div>
+            <div className="text-gray-300 text-sm">Latência</div>
           </div>
-          
-          <div className="glass-strong rounded-2xl p-6 hover:bg-purple-500/5 transition-all duration-300 hover-scale">
+
+          <div className="glass-strong rounded-2xl p-6 transition-all duration-300">
             <div className="flex items-center justify-center gap-3 mb-3">
               <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
-                <Award className="w-5 h-5 text-white" />
+                <Cpu className="w-5 h-5 text-white" />
               </div>
-              <div className="text-3xl md:text-4xl font-bold text-white">1.0</div>
+              <div className="text-3xl md:text-4xl font-bold text-white">C++</div>
             </div>
-            <div className="text-gray-300 text-sm">Versão Atual</div>
+            <div className="text-gray-300 text-sm">Engine Nativo</div>
           </div>
         </motion.div>
 
-        {/* Audio visualizer effect - simulando o processamento de áudio */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2, delay: 1.5 }}
-          className="mt-16 mb-8 flex justify-center items-center gap-1 max-w-md mx-auto"
-        >
-          {mounted && Array.from({ length: 20 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="w-1 bg-gradient-to-t from-blue-500 to-cyan-400 rounded-full audio-visualizer"
-              animate={{
-                height: [4, 20 + (i % 3) * 10, 4],
-              }}
-              transition={{
-                duration: 1 + (i % 2) * 0.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.1,
-              }}
-              style={{
-                maxHeight: '40px', // Limita altura máxima
-              }}
-            />
-          ))}
-        </motion.div>
-        <div className="text-center text-gray-400 text-sm mt-4 mb-8">
-          🎵 Processamento de Áudio em Tempo Real
-        </div>
       </div>
     </section>
   )

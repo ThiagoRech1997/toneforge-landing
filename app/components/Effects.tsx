@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Volume2, RotateCcw, Settings } from 'lucide-react'
+import { Volume2, RotateCcw, Settings, Music } from 'lucide-react'
 
 const effects = [
   {
@@ -101,7 +101,7 @@ export default function Effects() {
   const [selectedEffect, setSelectedEffect] = useState(effects[0])
 
   return (
-    <section className="py-24 px-6 relative overflow-hidden">
+    <section id="effects" className="py-24 px-6 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-800/50 via-gray-900/80 to-black/50"></div>
       
@@ -121,7 +121,7 @@ export default function Effects() {
             </span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            9 efeitos de alta qualidade com processamento em tempo real e controles precisos
+            Explore cada efeito e seus parâmetros — todos processados em tempo real via engine C++ nativo
           </p>
         </motion.div>
 
@@ -135,8 +135,9 @@ export default function Effects() {
         >
           {/* Effects Grid - Layout de pedaleira real */}
           <div className="grid grid-cols-3 gap-4 p-8 bg-gradient-to-br from-gray-800/60 to-gray-900/80 rounded-3xl border border-blue-500/20 backdrop-blur-sm">
-            <h3 className="col-span-3 text-2xl font-bold text-white mb-6 text-center">
-              🎸 Pedaleira Digital
+            <h3 className="col-span-3 text-2xl font-bold text-white mb-6 text-center flex items-center justify-center gap-2">
+              <Music className="w-6 h-6 text-blue-400" />
+              Pedaleira Digital
             </h3>
             {effects.map((effect, index) => (
               <motion.button
@@ -194,13 +195,13 @@ export default function Effects() {
               className="col-span-3 mt-6 p-4 bg-gray-800/60 rounded-xl border border-gray-700/40"
             >
               <div className="flex items-center justify-center gap-3 text-sm text-gray-300">
-                <span className="text-2xl">🎸</span>
+                <Music className="w-5 h-5 text-blue-400" />
                 <div className="w-12 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400"></div>
                 <span className="px-3 py-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg text-white text-sm font-medium">
                   ToneForge
                 </span>
                 <div className="w-12 h-0.5 bg-gradient-to-r from-purple-400 to-green-400"></div>
-                <span className="text-2xl">🔊</span>
+                <Volume2 className="w-5 h-5 text-green-400" />
               </div>
               <p className="text-center text-xs text-gray-400 mt-3">
                 Cadeia de Sinal Digital em Tempo Real
@@ -214,7 +215,7 @@ export default function Effects() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="sticky top-8"
+            className="sticky top-20"
           >
             <div className={`
               p-8 rounded-3xl border-2 ${selectedEffect.bgColor} ${selectedEffect.borderColor} backdrop-blur-sm
@@ -294,36 +295,6 @@ export default function Effects() {
           </motion.div>
         </motion.div>
 
-        {/* Technical Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center bg-gradient-to-br from-blue-900/20 via-purple-900/10 to-cyan-900/20 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-blue-500/20"
-        >
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Processamento de Áudio Profissional
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">&lt; 3ms</div>
-              <div className="text-gray-300">Latência Ultra-Baixa</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">48kHz</div>
-              <div className="text-gray-300">Sample Rate</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">32-bit</div>
-              <div className="text-gray-300">Processamento Float</div>
-            </div>
-          </div>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Engine de áudio C++ nativo com algoritmos otimizados para performance em tempo real.
-            Todos os efeitos são processados com qualidade de estúdio profissional.
-          </p>
-        </motion.div>
       </div>
     </section>
   )

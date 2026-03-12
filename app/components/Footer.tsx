@@ -2,32 +2,56 @@
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { 
-  Github, 
-  ExternalLink, 
-  Star, 
-  Download, 
-  Code2, 
+import Image from 'next/image'
+import {
+  Github,
+  Download,
+  Code2,
   Music,
   Heart,
-  Users,
+  ArrowUp,
+  Smartphone,
+  Link2,
+  Wrench,
+  Package,
+  Layers,
+  Palette,
+  Cpu,
 } from 'lucide-react'
+
+const sectionLinks = [
+  { label: 'Funcionalidades', href: '#features' },
+  { label: 'Efeitos', href: '#effects' },
+  { label: 'Screenshots', href: '#screenshots' },
+  { label: 'Especificações', href: '#specs' },
+  { label: 'Download', href: '#download' },
+]
 
 export default function Footer() {
   const [currentYear, setCurrentYear] = useState('')
-  
-  // Obter basePath do processo de build ou usar string vazia
+  const [showTopButton, setShowTopButton] = useState(false)
+
   const basePath = process.env.NODE_ENV === 'production' && process.env.GITHUB_ACTIONS ? '/toneforge-landing' : ''
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear().toString())
+
+    const onScroll = () => setShowTopButton(window.scrollY > 500)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  const scrollTo = (e: React.MouseEvent, href: string) => {
+    e.preventDefault()
+    const el = document.querySelector(href)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <footer className="relative py-20 px-6 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-900"></div>
-      
+
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500"></div>
@@ -46,9 +70,11 @@ export default function Footer() {
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="w-16 h-16 rounded-2xl flex items-center justify-center overflow-hidden">
-                <img 
-                  src={`${basePath}/toneforge-icon.png`} 
-                  alt="ToneForge Icon" 
+                <Image
+                  src={`${basePath}/toneforge-icon.png`}
+                  alt="ToneForge Icon"
+                  width={64}
+                  height={64}
                   className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
@@ -57,21 +83,16 @@ export default function Footer() {
                 <p className="text-gray-400">Pedaleira Digital Profissional</p>
               </div>
             </div>
-            
+
             <p className="text-gray-400 mb-6 leading-relaxed max-w-md">
-              Transforme seu dispositivo Android em uma estação de criação musical completa. 
+              Transforme seu dispositivo Android em uma estação de criação musical completa.
               Processamento de áudio em tempo real, efeitos profissionais e tecnologia de baixa latência.
             </p>
 
             <div className="flex items-center gap-4 mb-6">
               <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-yellow-400" />
-                <span className="text-gray-300 text-sm">4.8/5</span>
-              </div>
-              <div className="w-1 h-4 bg-gray-600"></div>
-              <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-blue-400" />
-                <span className="text-gray-300 text-sm">50k+ Downloads</span>
+                <Code2 className="w-4 h-4 text-blue-400" />
+                <span className="text-gray-300 text-sm">Código Aberto</span>
               </div>
               <div className="w-1 h-4 bg-gray-600"></div>
               <div className="flex items-center gap-2">
@@ -103,28 +124,25 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          {/* Quick Links */}
+          {/* Quick Links - now functional */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <h4 className="text-lg font-bold text-white mb-6">App Features</h4>
+            <h4 className="text-lg font-bold text-white mb-6">Navegação</h4>
             <div className="space-y-3">
-              {[
-                'Efeitos Profissionais',
-                'Looper Multi-track',
-                'Afinador Preciso',
-                'Sistema de Presets',
-                'Suporte MIDI',
-                'Gravador Digital'
-              ].map((link, index) => (
+              {sectionLinks.map((link, index) => (
                 <div key={index} className="flex items-center gap-2">
                   <div className="w-1 h-1 bg-blue-400 rounded-full"></div>
-                  <span className="text-gray-400 hover:text-gray-300 transition-colors duration-300 text-sm">
-                    {link}
-                  </span>
+                  <a
+                    href={link.href}
+                    onClick={(e) => scrollTo(e, link.href)}
+                    className="text-gray-400 hover:text-white transition-colors duration-300 text-sm cursor-pointer"
+                  >
+                    {link.label}
+                  </a>
                 </div>
               ))}
             </div>
@@ -148,15 +166,15 @@ export default function Footer() {
                   <div className="text-gray-400 text-sm">Android Developer</div>
                 </div>
               </div>
-              
+
               <p className="text-gray-400 text-sm leading-relaxed">
-                Desenvolvedor Android apaixonado por música e tecnologia, 
+                Desenvolvedor Android apaixonado por música e tecnologia,
                 criando ferramentas que capacitam músicos a expressar sua criatividade.
               </p>
 
               <div className="flex items-center gap-3">
                 <Github className="w-4 h-4 text-gray-400" />
-                <a 
+                <a
                   href="https://github.com/ThiagoRech1997"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -169,7 +187,7 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* Technology Stack */}
+        {/* Technology Stack - emojis replaced with Lucide icons, no whileHover */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -183,17 +201,17 @@ export default function Footer() {
               Construído com as melhores tecnologias para performance e qualidade
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
             {[
-              { name: 'Android', icon: '🤖', color: 'from-green-500 to-green-600' },
-              { name: 'C++', icon: '⚡', color: 'from-blue-500 to-blue-600' },
-              { name: 'JNI', icon: '🔗', color: 'from-purple-500 to-purple-600' },
-              { name: 'OpenGL', icon: '🎨', color: 'from-pink-500 to-pink-600' },
-              { name: 'NDK', icon: '🛠️', color: 'from-yellow-500 to-yellow-600' },
-              { name: 'MVP', icon: '🏗️', color: 'from-indigo-500 to-indigo-600' },
-              { name: 'Material', icon: '🎭', color: 'from-cyan-500 to-cyan-600' },
-              { name: 'Gradle', icon: '📦', color: 'from-gray-500 to-gray-600' }
+              { name: 'Android', icon: <Smartphone className="w-5 h-5 text-white" />, color: 'from-green-500 to-green-600' },
+              { name: 'C++', icon: <Cpu className="w-5 h-5 text-white" />, color: 'from-blue-500 to-blue-600' },
+              { name: 'JNI', icon: <Link2 className="w-5 h-5 text-white" />, color: 'from-purple-500 to-purple-600' },
+              { name: 'CMake', icon: <Wrench className="w-5 h-5 text-white" />, color: 'from-pink-500 to-pink-600' },
+              { name: 'NDK', icon: <Wrench className="w-5 h-5 text-white" />, color: 'from-yellow-500 to-yellow-600' },
+              { name: 'MVP', icon: <Layers className="w-5 h-5 text-white" />, color: 'from-indigo-500 to-indigo-600' },
+              { name: 'Material', icon: <Palette className="w-5 h-5 text-white" />, color: 'from-cyan-500 to-cyan-600' },
+              { name: 'Gradle', icon: <Package className="w-5 h-5 text-white" />, color: 'from-gray-500 to-gray-600' }
             ].map((tech, index) => (
               <motion.div
                 key={index}
@@ -201,13 +219,12 @@ export default function Footer() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.1, y: -5 }}
-                className="text-center group cursor-pointer"
+                className="text-center"
               >
-                <div className={`w-12 h-12 bg-gradient-to-br ${tech.color} group-hover:shadow-lg group-hover:shadow-current/25 rounded-xl flex items-center justify-center mb-2 mx-auto transition-all duration-300`}>
-                  <span className="text-xl">{tech.icon}</span>
+                <div className={`w-12 h-12 bg-gradient-to-br ${tech.color} rounded-xl flex items-center justify-center mb-2 mx-auto`}>
+                  {tech.icon}
                 </div>
-                <span className="text-gray-400 group-hover:text-white text-sm transition-colors duration-300">
+                <span className="text-gray-400 text-sm">
                   {tech.name}
                 </span>
               </motion.div>
@@ -225,27 +242,25 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-6 text-gray-400 text-sm">
-              <span>© {currentYear} ToneForge. Todos os direitos reservados.</span>
+              <span>&copy; {currentYear} ToneForge. Todos os direitos reservados.</span>
               <div className="hidden md:flex items-center gap-4">
-                <a href="#" className="hover:text-white transition-colors duration-300">Política de Privacidade</a>
-                <a href="#" className="hover:text-white transition-colors duration-300">Termos de Uso</a>
-                <a href="#" className="hover:text-white transition-colors duration-300">Licença MIT</a>
+                <a href="https://github.com/ThiagoRech1997/ToneForge/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">Licença</a>
+                <a href="https://github.com/ThiagoRech1997/ToneForge" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">Código Fonte</a>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-3">
               <Music className="w-4 h-4 text-cyan-400" />
               <span className="text-gray-400 text-sm">
-                Versão 2.1.0 • Dezembro 2024
+                Versão 1.0
               </span>
             </div>
           </div>
-          
+
           {/* Mobile links */}
           <div className="md:hidden flex flex-wrap justify-center gap-4 mt-6 text-gray-400 text-sm">
-            <a href="#" className="hover:text-white transition-colors duration-300">Política de Privacidade</a>
-            <a href="#" className="hover:text-white transition-colors duration-300">Termos de Uso</a>
-            <a href="#" className="hover:text-white transition-colors duration-300">Licença MIT</a>
+            <a href="https://github.com/ThiagoRech1997/ToneForge/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">Licença</a>
+            <a href="https://github.com/ThiagoRech1997/ToneForge" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">Código Fonte</a>
           </div>
 
           {/* Made with love */}
@@ -256,19 +271,21 @@ export default function Footer() {
           </div>
         </motion.div>
 
-        {/* Back to Top Button */}
-        <motion.button
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          whileHover={{ scale: 1.1, y: -2 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 z-50"
-        >
-          <ExternalLink className="w-5 h-5 rotate-[-90deg]" />
-        </motion.button>
+        {/* Back to Top Button - shows only after scroll > 500px */}
+        {showTopButton && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            whileHover={{ scale: 1.1, y: -2 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            aria-label="Voltar ao topo"
+            className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all duration-300 z-50"
+          >
+            <ArrowUp className="w-5 h-5" />
+          </motion.button>
+        )}
       </div>
     </footer>
   )
-} 
+}

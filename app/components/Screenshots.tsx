@@ -10,24 +10,31 @@ const screenshots = [
     title: 'Interface Principal',
     description: 'Design moderno com acesso rápido a todas as ferramentas',
     mockup: (
-      <div className="bg-gray-900 rounded-3xl p-6 h-full">
-        <div className="bg-gradient-to-br from-purple-600 to-cyan-600 rounded-2xl p-4 mb-4">
-          <div className="text-center text-white font-bold text-lg">🎸 ToneForge</div>
+      <div className="rounded-3xl p-6 h-full" style={{ backgroundColor: '#111827' }}>
+        <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-4 mb-4">
+          <div className="text-center text-white font-bold text-lg">ToneForge</div>
         </div>
-        <div className="grid grid-cols-2 gap-3">
-          {['Efeitos', 'Looper', 'Afinador', 'Metrônomo'].map((item, i) => (
-            <div key={i} className="bg-gray-800 rounded-xl p-3 text-center text-white text-sm">
-              {item}
+        <div className="grid grid-cols-3 gap-3">
+          {[
+            { name: 'Afinador', color: '#FF9500' },
+            { name: 'Efeitos', color: '#007AFF' },
+            { name: 'Looper', color: '#AF52DE' },
+            { name: 'Metrônomo', color: '#34C759' },
+            { name: 'Gravador', color: '#FF3B30' },
+            { name: 'Aprender', color: '#5AC8FA' },
+          ].map((item, i) => (
+            <div key={i} className="rounded-xl p-3 text-center text-white text-xs font-medium" style={{ backgroundColor: '#1F2937', borderLeft: `3px solid ${item.color}` }}>
+              {item.name}
             </div>
           ))}
         </div>
-        <div className="mt-4 bg-gray-800 rounded-xl p-3">
+        <div className="mt-4 rounded-xl p-3" style={{ backgroundColor: '#1F2937' }}>
           <div className="flex items-center justify-between mb-2">
-            <span className="text-white text-xs">Audio Status</span>
+            <span className="text-white text-xs">Pipeline Ativo</span>
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
           </div>
           <div className="h-1 bg-gray-700 rounded-full">
-            <div className="h-full w-3/4 bg-cyan-400 rounded-full"></div>
+            <div className="h-full w-3/4 rounded-full" style={{ backgroundColor: '#3B82F6' }}></div>
           </div>
         </div>
       </div>
@@ -38,30 +45,30 @@ const screenshots = [
     title: 'Pedaleira de Efeitos',
     description: 'Controles profissionais para todos os efeitos',
     mockup: (
-      <div className="bg-gray-900 rounded-3xl p-6 h-full">
-        <div className="text-white font-bold mb-4 text-center">🎛️ Efeitos</div>
+      <div className="rounded-3xl p-6 h-full" style={{ backgroundColor: '#111827' }}>
+        <div className="text-white font-bold mb-4 text-center" style={{ color: '#007AFF' }}>Efeitos</div>
         <div className="space-y-3">
           {[
-            { name: 'Gain', color: 'bg-green-500', value: 65 },
-            { name: 'Distortion', color: 'bg-red-500', value: 45 },
-            { name: 'Delay', color: 'bg-blue-500', value: 30 }
+            { name: 'Gain', color: '#10B981', value: 65 },
+            { name: 'Distortion', color: '#DC2626', value: 45 },
+            { name: 'Delay', color: '#059669', value: 30 }
           ].map((effect, i) => (
-            <div key={i} className="bg-gray-800 rounded-lg p-3">
+            <div key={i} className="rounded-lg p-3" style={{ backgroundColor: '#1F2937' }}>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white text-sm">{effect.name}</span>
-                <div className="w-8 h-4 bg-gray-700 rounded-full p-0.5">
-                  <div className={`w-3 h-3 ${effect.color} rounded-full translate-x-4`}></div>
+                <div className="w-8 h-4 rounded-full p-0.5" style={{ backgroundColor: '#374151' }}>
+                  <div className="w-3 h-3 rounded-full translate-x-4" style={{ backgroundColor: effect.color }}></div>
                 </div>
               </div>
-              <div className="h-1 bg-gray-700 rounded-full">
-                <div className={`h-full ${effect.color} rounded-full`} style={{width: `${effect.value}%`}}></div>
+              <div className="h-1 rounded-full" style={{ backgroundColor: '#374151' }}>
+                <div className="h-full rounded-full" style={{ width: `${effect.value}%`, backgroundColor: effect.color }}></div>
               </div>
             </div>
           ))}
         </div>
         <div className="mt-4 grid grid-cols-3 gap-2">
           {['Preset 1', 'Preset 2', 'Preset 3'].map((preset, i) => (
-            <div key={i} className="bg-purple-600 rounded p-2 text-white text-xs text-center">
+            <div key={i} className="rounded p-2 text-white text-xs text-center" style={{ backgroundColor: '#8B5CF6' }}>
               {preset}
             </div>
           ))}
@@ -74,14 +81,14 @@ const screenshots = [
     title: 'Looper Multi-track',
     description: 'Grave e reproduza loops com visualização em tempo real',
     mockup: (
-      <div className="bg-gray-900 rounded-3xl p-6 h-full">
-        <div className="text-white font-bold mb-4 text-center">🔄 Looper</div>
-        <div className="bg-gray-800 rounded-xl p-3 mb-4">
-          <div className="h-12 bg-gray-700 rounded-lg relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-blue-500/40 to-purple-500/20"></div>
-            <div className="absolute left-1/3 top-0 w-0.5 h-full bg-cyan-400 animate-pulse"></div>
+      <div className="rounded-3xl p-6 h-full" style={{ backgroundColor: '#111827' }}>
+        <div className="text-white font-bold mb-4 text-center" style={{ color: '#AF52DE' }}>Looper</div>
+        <div className="rounded-xl p-3 mb-4" style={{ backgroundColor: '#1F2937' }}>
+          <div className="h-12 rounded-lg relative overflow-hidden" style={{ backgroundColor: '#374151' }}>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/40 to-purple-500/20"></div>
+            <div className="absolute left-1/3 top-0 w-0.5 h-full animate-pulse" style={{ backgroundColor: '#AF52DE' }}></div>
           </div>
-          <div className="text-center text-white text-xs mt-2">Waveform Visualization</div>
+          <div className="text-center text-white text-xs mt-2">Waveform</div>
         </div>
         <div className="grid grid-cols-3 gap-2 mb-4">
           {['REC', 'PLAY', 'STOP'].map((button, i) => (
@@ -95,11 +102,11 @@ const screenshots = [
         </div>
         <div className="space-y-2">
           {['Track 1', 'Track 2'].map((track, i) => (
-            <div key={i} className="bg-gray-800 rounded p-2 flex items-center justify-between">
+            <div key={i} className="rounded p-2 flex items-center justify-between" style={{ backgroundColor: '#1F2937' }}>
               <span className="text-white text-xs">{track}</span>
               <div className="flex gap-1">
-                <div className="w-6 h-4 bg-blue-500 rounded text-xs text-center text-white">M</div>
-                <div className="w-6 h-4 bg-yellow-500 rounded text-xs text-center text-white">S</div>
+                <div className="w-6 h-4 rounded text-xs text-center text-white" style={{ backgroundColor: '#3B82F6' }}>M</div>
+                <div className="w-6 h-4 rounded text-xs text-center text-white" style={{ backgroundColor: '#CA8A04' }}>S</div>
               </div>
             </div>
           ))}
@@ -112,30 +119,30 @@ const screenshots = [
     title: 'Afinador de Precisão',
     description: 'Detecção de frequência com precisão profissional',
     mockup: (
-      <div className="bg-gray-900 rounded-3xl p-6 h-full">
-        <div className="text-white font-bold mb-4 text-center">🎵 Afinador</div>
+      <div className="rounded-3xl p-6 h-full" style={{ backgroundColor: '#111827' }}>
+        <div className="text-white font-bold mb-4 text-center" style={{ color: '#FF9500' }}>Afinador</div>
         <div className="text-center mb-6">
-          <div className="text-6xl font-bold text-cyan-400 mb-2">A</div>
+          <div className="text-6xl font-bold mb-2" style={{ color: '#FF9500' }}>A</div>
           <div className="text-2xl text-white mb-1">440.0 Hz</div>
           <div className="text-green-400 text-sm">+2 cents</div>
         </div>
-        <div className="bg-gray-800 rounded-xl p-4 mb-4">
-          <div className="h-8 bg-gray-700 rounded-lg relative">
+        <div className="rounded-xl p-4 mb-4" style={{ backgroundColor: '#1F2937' }}>
+          <div className="h-8 rounded-lg relative" style={{ backgroundColor: '#374151' }}>
             <div className="absolute left-1/2 top-0 w-1 h-full bg-white"></div>
             <div className="absolute left-1/2 top-1 w-3 h-6 bg-green-400 rounded -translate-x-1/2 translate-x-1"></div>
           </div>
           <div className="flex justify-between text-white text-xs mt-2">
-            <span>♭</span>
-            <span>Perfect</span>
-            <span>♯</span>
+            <span>&#9837;</span>
+            <span>Afinado</span>
+            <span>&#9839;</span>
           </div>
         </div>
         <div className="grid grid-cols-7 gap-1">
           {['C', 'D', 'E', 'F', 'G', 'A', 'B'].map((note, i) => (
-            <div key={i} className={`
-              p-2 rounded text-center text-sm font-bold
-              ${note === 'A' ? 'bg-cyan-600 text-white' : 'bg-gray-800 text-gray-400'}
-            `}>
+            <div key={i} className="p-2 rounded text-center text-sm font-bold" style={{
+              backgroundColor: note === 'A' ? '#FF9500' : '#1F2937',
+              color: note === 'A' ? 'white' : '#9CA3AF'
+            }}>
               {note}
             </div>
           ))}
@@ -157,7 +164,7 @@ export default function Screenshots() {
   }
 
   return (
-    <section className="py-20 px-6 relative overflow-hidden">
+    <section id="screenshots" className="py-20 px-6 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-gray-800"></div>
       
@@ -171,13 +178,13 @@ export default function Screenshots() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Interface
+            Preview da
             <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent ml-4">
-              Moderna
+              Interface
             </span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Design intuitivo e profissional otimizado para performance musical
+            Design intuitivo com tema escuro, otimizado para performance musical
           </p>
         </motion.div>
 
@@ -223,13 +230,13 @@ export default function Screenshots() {
               {/* Navigation Buttons */}
               <button
                 onClick={prevScreen}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 md:-translate-x-12 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={nextScreen}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 md:translate-x-12 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -261,10 +268,10 @@ export default function Screenshots() {
             {/* Features List */}
             <div className="space-y-4">
               {[
-                'Interface Dark Mode elegante',
-                'Controles táteis responsivos',
-                'Visualizações em tempo real',
-                'Navegação intuitiva entre módulos'
+                'Design intuitivo com tema escuro',
+                'Knobs realistas com controle preciso',
+                'Visualização de waveform em tempo real',
+                'Navegação por grid na tela inicial'
               ].map((feature, index) => (
                 <motion.div
                   key={index}
@@ -295,27 +302,11 @@ export default function Screenshots() {
           </motion.div>
         </div>
 
-        {/* Additional Features */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {[
-            { icon: '📱', title: 'Responsivo', desc: 'Otimizado para todos os tamanhos de tela' },
-            { icon: '🎨', title: 'Material Design', desc: 'Interface moderna seguindo guidelines do Google' },
-            { icon: '🌙', title: 'Dark Mode', desc: 'Perfeito para ambientes com pouca luz' },
-            { icon: '⚡', title: 'Performance', desc: 'Animações fluidas e transições suaves' }
-          ].map((item, index) => (
-            <div key={index} className="text-center p-6 bg-gray-900/30 rounded-xl border border-gray-700/30">
-              <div className="text-4xl mb-4">{item.icon}</div>
-              <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-              <p className="text-gray-400 text-sm">{item.desc}</p>
-            </div>
-          ))}
-        </motion.div>
+        {/* Disclaimer */}
+        <div className="text-center mt-8 mb-8">
+          <p className="text-gray-500 text-sm italic">Representação ilustrativa da interface. O design real pode variar.</p>
+        </div>
+
       </div>
     </section>
   )

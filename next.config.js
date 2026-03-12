@@ -23,29 +23,8 @@ const nextConfig = {
     unoptimized: true, // Necessário para exportação estática
   },
 
-  // Webpack otimizações
-  webpack: (config, { dev, isServer }) => {
-    // Otimizações para produção
-    if (!dev && !isServer) {
-      config.optimization.splitChunks.cacheGroups = {
-        ...config.optimization.splitChunks.cacheGroups,
-        framer: {
-          name: 'framer-motion',
-          test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-          chunks: 'all',
-          priority: 30,
-        },
-        lucide: {
-          name: 'lucide-react',
-          test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
-          chunks: 'all',
-          priority: 25,
-        },
-      }
-    }
-
-    return config
-  },
+  // Turbopack (padrão no Next.js 16)
+  turbopack: {},
 
   // Configurações experimentais
   experimental: {

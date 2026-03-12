@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Script from 'next/script'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -64,8 +63,6 @@ export const metadata: Metadata = {
     title: 'ToneForge - Pedaleira Digital Profissional para Android',
     description: 'Transforme seu Android em uma estação de criação musical completa com processamento de áudio em tempo real e efeitos profissionais.',
     images: ['https://thiagorech1997.github.io/toneforge-landing/og-image.png'],
-    creator: '@thiagofernendorech',
-    site: '@thiagofernendorech',
   },
 
   manifest: '/manifest.json',
@@ -89,7 +86,6 @@ export const metadata: Metadata = {
     canonical: 'https://thiagorech1997.github.io/toneforge-landing/',
     languages: {
       'pt-BR': 'https://thiagorech1997.github.io/toneforge-landing/',
-      'en-US': 'https://thiagorech1997.github.io/toneforge-landing/en',
     },
   },
   category: 'technology',
@@ -112,39 +108,13 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="dark">
       <head>
-        {/* Open Graph Meta Tags */}
-        <meta property="og:url" content="https://thiagorech1997.github.io/toneforge-landing/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="ToneForge - Pedaleira Digital Profissional para Android" />
-        <meta property="og:description" content="Transforme seu Android em uma estação de criação musical completa com processamento de áudio em tempo real e efeitos profissionais." />
-        <meta property="og:image" content="https://thiagorech1997.github.io/toneforge-landing/og-image.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="ToneForge - Pedaleira Digital para Android" />
-        <meta property="og:site_name" content="ToneForge" />
-        <meta property="og:locale" content="pt_BR" />
-
-        {/* Twitter Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="thiagorech1997.github.io" />
-        <meta property="twitter:url" content="https://thiagorech1997.github.io/toneforge-landing/" />
-        <meta name="twitter:title" content="ToneForge - Pedaleira Digital Profissional para Android" />
-        <meta name="twitter:description" content="Transforme seu Android em uma estação de criação musical completa com processamento de áudio em tempo real e efeitos profissionais." />
-        <meta name="twitter:image" content="https://thiagorech1997.github.io/toneforge-landing/og-image.png" />
-        <meta name="twitter:creator" content="@thiagofernendorech" />
-        <meta name="twitter:site" content="@thiagofernendorech" />
-
-        {/* Additional Meta Tags */}
-        <meta name="robots" content="index,follow" />
-        <meta name="googlebot" content="index,follow,max-video-preview:-1,max-image-preview:large,max-snippet:-1" />
-        
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
+
         {/* DNS prefetch for performance */}
         <link rel="dns-prefetch" href="https://github.com" />
-        
+
         {/* Structured Data */}
         <script
           type="application/ld+json"
@@ -171,22 +141,15 @@ export default function RootLayout({
               },
               "downloadUrl": "https://github.com/ThiagoRech1997/ToneForge/releases",
               "screenshot": "https://thiagorech1997.github.io/toneforge-landing/og-image.png",
-              "softwareVersion": "2.1.0",
-              "datePublished": "2024-12-01",
-              "dateModified": "2024-12-01",
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.8",
-                "ratingCount": "2500"
-              },
+              "softwareVersion": "1.0",
               "featureList": [
                 "9 efeitos de áudio profissionais",
-                "Processamento em tempo real",
+                "Processamento em tempo real com engine C++ nativo",
                 "Looper multi-track",
                 "Afinador de precisão",
                 "Suporte MIDI",
                 "Interface Material Design",
-                "Baixa latência"
+                "Baixa latência < 3ms"
               ]
             })
           }}
@@ -205,34 +168,6 @@ export default function RootLayout({
           {children}
         </div>
         
-        {/* Google Analytics - Replace with your actual GA4 ID */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'GA_MEASUREMENT_ID');
-          `}
-        </Script>
-        
-        {/* Performance monitoring */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Basic performance monitoring
-              window.addEventListener('load', function() {
-                if ('performance' in window) {
-                  const perfData = performance.getEntriesByType('navigation')[0];
-                  console.log('Page load time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
-                }
-              });
-            `,
-          }}
-        />
       </body>
     </html>
   )

@@ -30,14 +30,19 @@ O **ToneForge** é uma pedaleira digital profissional para Android que oferece:
 
 ### 🎛️ Funcionalidades Principais
 
-- **9 Efeitos Profissionais**: Ganho, Distorção, Delay, Reverb, Chorus, Flanger, Phaser, EQ, Compressor
-- **Baixa Latência**: < 3ms para performance ao vivo
+- **9 Efeitos de Estúdio**: 
+  - **Distorção**: Algoritmos Soft Clip, Hard Clip e Fuzz
+  - **Dinâmica**: Compressor com controles de Attack, Release e Ratio
+  - **Ambiência**: Reverb (Hall, Plate, Spring) e Delay com Sync BPM
+- **Engine de Alta Fidelidade**: Processamento com Oversampling até 8x (Anti-aliasing)
+- **Gerenciamento de Latência**: Modos selecionáveis (Baixa Latência, Equilibrado, Estabilidade)
+- **Automação**: Grave e reproduza movimentos de parâmetros em tempo real
 - **Looper Multi-track**: Gravação e reprodução com visualização waveform
 - **Afinador Preciso**: Detecção de frequência fundamental
 - **Metrônomo Avançado**: Controle de BPM e subdivisões
-- **Sistema de Presets**: Salvar e compartilhar configurações
-- **Suporte MIDI**: MIDI Learn para controle externo
-- **Gravador Profissional**: Exportação em múltiplos formatos
+- **Suporte MIDI Completo**: MIDI Learn, mapeamento e exportação de configurações
+- **Gravador Profissional**: Exportação Lossless (WAV, FLAC) e MP3
+- **Áudio em Background**: Continue tocando com a tela desligada
 
 ### 🔧 Especificações Técnicas
 
@@ -47,6 +52,7 @@ O **ToneForge** é uma pedaleira digital profissional para Android que oferece:
 - **Audio API**: AudioRecord/AudioTrack
 - **Sample Rate**: 48kHz
 - **Formato**: PCM Float 32-bit
+- **Processamento**: DSP Nativo com Oversampling 8x
 - **Arquitetura**: MVP (Model-View-Presenter)
 
 ## 🚦 Como Rodar o Projeto
